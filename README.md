@@ -79,6 +79,9 @@ What is VirtualBox?
 	# Check LVM Partitions
 	lsblk
 
+ 	# Check ssh status
+  	systemctl ssh status
+
 ## Glossary
 
 - Virtual Machine
