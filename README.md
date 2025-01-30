@@ -1,27 +1,27 @@
-Whar are we doing?
+# Whar are we doing?
 - Setting up a remote server using a virtual machine
 
 What is a virtual machine?
-	-Is a software digitally emulating a compter hardware
+- Is a software digitally emulating a compter hardware
+
 Why?
-	- So we can emulate two computers comunicating trhough a netwrk
+- So we can emulate two computers comunicating through a network
 
-VirtualBox
-	A virtual machine factory with costumable setings
+What is VirtualBox?
+- A virtual machine factory with costumable setings
 
-###Rules
-#1 - At least 2 Encrypted partions
-#2 - AppArmor must be running at startup
-#3 - Leave only port 4242 open in your virtual machine 
-#4 - Your firewall must be active when you launch your VM
-#5 - hostname musst be loggin ending with 42
-#6 - You will have to modify it during evauation
-#7 - Implement strong password policy rules
-#8 - Implement Sudo with rules
-#9 - In addition too root user, must have a user with your username
-#10 - This user has to belong to user42 and sudo groups
-#11 - During defense, you have to create a new user and assign it to a group
-#12 - 
+## Rules
+### 1- At least 2 Encrypted partions
+### 2 - AppArmor must be running at startup
+### 3 - Leave only port 4242 open in your virtual machine 
+### 4 - Your firewall must be active when you launch your VM
+### 5 - hostname musst be loggin ending with 42
+### 6 - You will have to modify it during evauation
+### 7 - Implement strong password policy rules
+### 8 - Implement Sudo with rules
+### 9 - In addition too root user, must have a user with your username
+### 10 - This user has to belong to user42 and sudo groups
+### 11 - During defense, you have to create a new user and assign it to a group
 
 ## Password Rules
 	#1 Has to expire every 30 days
@@ -34,7 +34,7 @@ VirtualBox
 	#4.5 - New password must have at least 7 char different from prior pw
 	#4.6 - root must follow all rules except 4.5
 
-##Sudo Rules
+## Sudo Rules
 	#1 sudo auht must be limited to 3 attemps of incorrect pw
 	#2 A custom message must occur if wrong pass used as sudo
 	#3 sudo i/o must be logged at /var/log/sudo/
@@ -43,7 +43,7 @@ VirtualBox
 	#5 These path must be restricted to sudo
 	/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
 
-##Script Rules
+## Script Rules
 	#1 Must be in bash
 	#2 Must be launch at startup
 	#3 Broadcast output to every terminal every 10 minutes
@@ -63,34 +63,33 @@ VirtualBox
 		- number of commands executed with sudo
 
 
-##Commands to check requirements
-	#OS name
+## Commands to check requirements
+	# OS name
 	`head -n 2 /etc/os-release`
 
-	#AppArmor loaded
+	# AppArmor loaded
 	/usr/sbin/aa-status
 
-	#Check Established Ports
+	# Check Established Ports
 	ss -tunlp
 
-	#Check ufw status
+	# Check ufw status
 	/usr/sbin/ufw status	
 
-	#Check LVM Partitions
+	# Check LVM Partitions
 	lsblk
 
-###Glossary
+## Glossary
 
 - Virtual Machine
 	- Software imitating a physcical machine
- - Partitions - Logical division of a physical storage
-
+ - Partitions
+	- Logical division of a physical storage
 - Debian vs Rocky
 	- Debian and Rocky are Linux distros
-
 - Why Debian?
 	- Very Stable & Securre
-	- Lightweight - install necessary packages only
+	- Lightweight : install necessary packages only
 	- Extensive repositores
 
 - Operating System
@@ -125,33 +124,33 @@ VirtualBox
 - Port
 - MAC address
 
-#Questions
+# Questions
 	Why 2 partitions?
 	- To seperate user data from OS essential files
 
 	Why use LVM?
 	- To easely simulate another machine
 
-###Configuration files
+## Configuration files
 
-#SSH config file
+### SSH config file
 /etc/ssh/sshd_config
 /etc/ssh/ssh_config (different files)
 
-#Passowrd Security Libpam
+### Passowrd Security Libpam
 /etc/pam.d/common-password
 
-#Password expirations
+### Password expirations
 /etc/login.defs
 
-#Logs
+### Logs
 /var/log/sudo/sudo.log
 
-#Config Suduoers group
+### Config Suduoers group
 /etc/sudoers
 
-#Script
+### Script
 /usr/lcal/bin/
 
-#Cron Configuration
+### Cron Configuration
 sudo crontab -u root -e
